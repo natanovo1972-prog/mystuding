@@ -1,17 +1,20 @@
-from typing import List, Dict, Any
+from typing import List, Dict
 
 
-def filter_by_state(list_dictionary: List[Dict[str, Any]], state="EXECUTED") -> List[Dict[str, Any]]:
-    """Функция принимает список словарей и значение ключа, и возвращает новый список словарей по значению ключа"""
+def filter_by_state(list_dictionary: List[Dict], state: str = "EXECUTED") -> List[Dict]:
+    """Функция принимает на вход список словарей с данными о банковских операциях и параметр state,
+    и возвращает новый список, содержащий только те словари, у которых ключ state содержит переданное
+    в функцию значение"""
     new_list_dictionary = []
-    for d in list_dictionary:
-        if d.get("state") == state:
-            new_list_dictionary.append(d)
+    for item in list_dictionary:
+        if item.get("state") == state:
+            new_list_dictionary.append(item)
     return new_list_dictionary
 
 
-def sort_by_date(list_dictionary_date: List[Dict[str, Any]], date: bool = True) -> List[Dict[str, Any]]:
-    """Функция принимает список словарей и параметр сортировки, и возвращает новый список, отсортированный по дате"""
+def sort_by_date(list_dictionary_date: List[Dict], date: bool = True) -> List[Dict]:
+    """Функция принимает на вход список словарей и параметр порядка сортировки, и возвращает новый список,
+    в котором исходные словари отсортированы по дате"""
     new_list_by_date = sorted(list_dictionary_date, key=lambda data: data["date"], reverse=date)
     return new_list_by_date
 
