@@ -10,16 +10,16 @@ def test_mask_card_number():
 def test_mask_card_number_incorrect():
     """Проверка работы функции на различных форматах номеров карт, включая граничные случаи
     и нестандартрные длины номеров карт"""
-    with pytest.raises(ValueError, match="Номер должен содержать 16 цифр") as exc_info:
+    with pytest.raises(ValueError, match="Номер введен неверно") as exc_info:
         get_mask_card_number("700079228960") #Тестируем короткий номер
 
-    with pytest.raises(ValueError, match="Номер должен содержать 16 цифр") as exc_info:
+    with pytest.raises(ValueError, match="Номер введен неверно") as exc_info:
         get_mask_card_number("700007922896063636") #Тестируем длинный номер
 
 
 def test_mask_card_number_empty():
     """Проверка, что функция корректно обрабатывает строки, где отсутствует номер карты"""
-    with pytest.raises(ValueError, match="Номер должен содержать 16 цифр"):
+    with pytest.raises(ValueError, match="Номер введен неверно"):
         get_mask_card_number("") #Тестируем пустую строку
 
 
@@ -30,12 +30,12 @@ def test_mask_account():
 
 def test_mask_account_format_length():
     """Проверка работы функции с различными форматами и длинами номера счета"""
-    with pytest.raises(ValueError, match="Номер счета должен содержать 20 цифр") as exc_info:
+    with pytest.raises(ValueError, match="Номер введен неверно") as exc_info:
         get_mask_account("7365 4108 4301 3587 4305") #Тестируем номер с пробелами
 
-    with pytest.raises(ValueError, match="Номер счета должен содержать 20 цифр") as exc_info:
+    with pytest.raises(ValueError, match="Номер введен неверно") as exc_info:
         get_mask_account("736541084301358743005") #Тестируем длинный номер
 
-    with pytest.raises(ValueError, match="Номер счета должен содержать 20 цифр") as exc_info:
+    with pytest.raises(ValueError, match="Номер введен неверно") as exc_info:
         get_mask_account("7365410843013587") #Тестируем короткий номер
 
