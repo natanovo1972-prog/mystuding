@@ -1,5 +1,5 @@
 import pytest
-
+from typing import List, Dict
 from src.processing import filter_by_state, sort_by_date
 
 
@@ -55,4 +55,18 @@ def test_sort_by_date_same():
     assert [d["id"] for d in result] == [594226727, 41428829, 615064591, 939719570]
 
 
+@pytest.mark.parametrize("invalid_date, expected_result", [
+    # Параметризация на тестирование некорректных форматов дат
+    # Ключ date отсутствует в словаре
+    ([{"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
+      {"id": 939719570, "state": "EXECUTED"}], KeyError),
+    # Значение даты - число
+    ([{"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
+      {"id": 615064591, "state": "CANCELED", "date": 20181014}], TypeError),
+    # Date - пустая строка
+    ([{"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
+      {"id": 615064591, "state": "CANCELED", "date": ""}], TypeError)])
+def test_sort_by_date_invalid(invalid_date, expected_result):
+    with pytest.raises(expected_result):
+        sort_by_date(invalid_date)
 

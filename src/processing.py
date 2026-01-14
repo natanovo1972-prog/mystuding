@@ -15,6 +15,9 @@ def filter_by_state(list_dictionary: List[Dict], state: str = "EXECUTED") -> Lis
 def sort_by_date(list_dictionary_date: List[Dict], date: bool = True) -> List[Dict]:
     """Функция принимает на вход список словарей и параметр порядка сортировки, и возвращает новый список,
     в котором исходные словари отсортированы по дате"""
+    for item in list_dictionary_date:
+        if item.get("date") == "":
+            raise TypeError("Дата введена некорректно")
     new_list_by_date = sorted(list_dictionary_date, key=lambda data: data["date"], reverse=date)
     return new_list_by_date
 
