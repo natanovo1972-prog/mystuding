@@ -1,12 +1,12 @@
 from functools import wraps
 import time
-from black.lines import Callable
+from typing import Callable, Any
 
 
 def log(filename=None) -> Callable:
-    def log_decorator(function):
+    def log_decorator(function: Callable) -> Callable:
         @wraps(function)
-        def wrapper(*args, **kwargs):
+        def wrapper(*args: Any, **kwargs: Any) -> Any:
             start_f = time.time()
             result = None
             error_msg = ""
@@ -36,7 +36,7 @@ def log(filename=None) -> Callable:
 if __name__ == "__main__":
 
     @log(filename="my_file.txt")
-    def my_function(x, y):
+    def my_function(x: int, y: int) -> int:
         return x + y
 
     my_function(1, 2)
