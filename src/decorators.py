@@ -4,6 +4,7 @@ from typing import Callable, Any
 
 
 def log(filename=None) -> Callable:
+    # Декоратор, который автоматически логирует начало и конец выполнения функции, ее результатыи и возникшие ошибки
     def log_decorator(function: Callable) -> Callable:
         @wraps(function)
         def wrapper(*args: Any, **kwargs: Any) -> Any:
