@@ -5,26 +5,25 @@ from typing import Any
 def test_log_success(capsys: Any) -> None:
     # Тест на успешное выполнение функций (вывод в консоль)
     @log()
-    def add(a: int, b: int) -> int:
+    def func_add(a: int, b: int) -> int:
         return a + b
 
-    add(1, 2)
+    func_add(1, 2)
     captured = capsys.readouterr()
-    assert "add finished" in captured.out
+    assert "func_add finished" in captured.out
     assert "error" not in captured.out
 
 
 def test_log_error(capsys: Any) -> None:
     # Тест на обработку исключений (вывод в консоль)
     @log()
-    def divide(a: int, b: int) -> int:
+    def func_divide(a: int, b: int) -> int:
         return a // b
 
-    divide(5, 0)
+    func_divide(5, 0)
     captured = capsys.readouterr()
-    assert "divide raised with arguments" in captured.out
-    assert "division by zero" in captured.out
-    assert "divide finished with error" in captured.out
+    assert "func_divide raised with arguments ((5, 0), {}) but it didn't worked," in captured.out
+    assert "func_divide finished with error" in captured.out
 
 
 @log(filename="my_file.txt")

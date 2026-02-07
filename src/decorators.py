@@ -4,23 +4,26 @@ from typing import Callable, Any
 
 
 def log(filename=None) -> Callable:
-    # Декоратор, который автоматически логирует начало и конец выполнения функции, ее результатыи и возникшие ошибки
+    # Декоратор для логирования работы функции
+    # filename - пусть к файлу лога, None - вывод в консоль
     def log_decorator(function: Callable) -> Callable:
+        # Декоратор логирует начало и конец функции, ее результаты и ошибки
         @wraps(function)
         def wrapper(*args: Any, **kwargs: Any) -> Any:
+            # Обертка, замеряющая время выполнения и перехватывающая ошибки
             start_f = time.time()
             result = None
             error_msg = ""
             try:
                 result = function(*args, **kwargs)
             except Exception as e:
-                # Вводим информацию об ошибке
+                # Информация об ошибке
                 error_msg = (f"{function.__name__} raised with arguments {args, kwargs} but it didn't worked,"
                              f"error:{str(e)} \n")
             finally:
                 finish_f = time.time()
                 raise_time = finish_f - start_f
-                # Вводим итоговое сообщение: ошибка (если нужно) и время выполнения функции
+                # Итоговое сообщение: ошибка (если нужно) и время выполнения функции
                 status = "finished" if not error_msg else "finished with error"
                 msg = f"{error_msg}{raise_time}s {function.__name__} {status}"
                 if filename:
