@@ -72,3 +72,17 @@ def test_log_way_to_filename_error() -> None:
         return "hello"
     with pytest.raises(FileNotFoundError):
         way()
+
+
+def test_log_args_empty(capsys) -> None:
+    """Тестируем функцию с пустыми аргументами"""
+
+    @log()
+    def nothing():
+        return "ok"
+
+    result = nothing()
+    captured = capsys.readouterr()
+    assert result == "ok"
+    assert "nothing finished" in captured.out
+    assert "()" in captured.out or "nothing finished" in captured.out
