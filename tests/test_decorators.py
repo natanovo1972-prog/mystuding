@@ -86,3 +86,25 @@ def test_log_args_empty(capsys) -> None:
     assert result == "ok"
     assert "nothing finished" in captured.out
     assert "()" in captured.out or "nothing finished" in captured.out
+
+
+def test_log_metadata():
+    """Тестируем, что метаданные не заменяются на wrapper"""
+    @log()
+    def some_function():
+        """Original docstring"""
+        return True
+
+    assert some_function.__name__ == "some_function"
+    assert some_function.__doc__ == "Original docstring"
+
+
+def test_log_arguments_correct():
+    """Тестируем, что декоратор не искажает входящие аргументы"""
+    @log()
+    def example(x, y, z):
+        return (x + y) * z
+
+    result = example(x=3, y=4, z=6)
+
+    assert result == 42
