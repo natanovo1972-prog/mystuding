@@ -74,6 +74,10 @@ git clone git@github.com:natanovo1972-prog/mystuding.git
 1. тестирование ошибочного пути к файлу
 ## test_log_args_empty:
 1. тестирование функции с пустыми аргументами
+## test_log_metadata:
+1. тест, что метаданные не заменяются на wrapper
+## test_log_arguments_correct:
+1. тестБ что декоратор не искажает входящие аргументы
 
 
 Запуск тестов:
