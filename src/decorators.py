@@ -38,7 +38,7 @@ def log(filename=None) -> Callable:
     return log_decorator
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": # pragma: no cover
 
     @log(filename="my_file.txt")
     def my_function(x: int, y: int) -> int:

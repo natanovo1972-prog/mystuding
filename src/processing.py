@@ -22,7 +22,7 @@ def sort_by_date(list_dictionary_date: List[Dict], date: bool = True) -> List[Di
     return new_list_by_date
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": # pragma: no cover
     test = [
         {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
         {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
