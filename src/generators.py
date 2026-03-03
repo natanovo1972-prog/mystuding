@@ -46,7 +46,7 @@ def card_number_generator(start: int, stop: int) -> typing.Iterator:
         yield number_card[0:4] + " " + number_card[4:8] + " " + number_card[8:12] + " " + number_card[12:]
 
 
-if __name__ == "__main__": # pragma: no cover
+if __name__ == "__main__":  # pragma: no cover
     usd_transactions = filter_by_currency(transactions, "USD")
     for _ in range(2):
         print(next(usd_transactions))

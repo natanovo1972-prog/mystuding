@@ -11,7 +11,7 @@ print(get_mask_card_number("7000792289606361"))
 def get_mask_account(count_number: str) -> str:
     """Функция принимает в качестве аргумента номер счета в виде строки и возвращает его маску"""
     if " " in count_number or "-" in count_number:
-        raise ValueError ("Номер введен неверно")
+        raise ValueError("Номер введен неверно")
     if len(count_number) < 20 or len(count_number) > 20:
         raise ValueError("Номер введен неверно")
     return "**" + count_number[-4:]

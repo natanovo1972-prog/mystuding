@@ -20,7 +20,7 @@ def get_date(date: str) -> str:
     return current_date.strftime("%d.%m.%Y")
 
 
-if __name__ == "__main__": # pragma: no cover
+if __name__ == "__main__":  # pragma: no cover
     test_1 = "Visa Platinum 8990922113665229"
     test_2 = "Счет 73654108430135874305"
     print(mask_account_card(test_1))
