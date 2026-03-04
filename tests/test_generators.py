@@ -1,8 +1,8 @@
-import pytest
-
 import re
 
-from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
+import pytest
+
+from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 
 
 @pytest.mark.parametrize("input_transaction, currency, expected_result", [

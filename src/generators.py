@@ -1,6 +1,4 @@
-import typing
-
-from black import Iterator
+from typing import Iterator
 
 transactions = ([{"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572",
                   "operationAmount": {"amount": "9824.07", "currency": {"name": "USD", "code": "USD"}},
@@ -24,7 +22,7 @@ transactions = ([{"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:0
                   "to": "Счет 14211924144426031657"}])
 
 
-def filter_by_currency(transactions: list, currency: str) -> Iterator:
+def filter_by_currency(transactions: list[dict], currency: str) -> Iterator:
     """Функция принимает на вход список словарей, представляющих транзакции, и возвращаеть итератор,
     который поочередно выдает транзакции, где валюта операции соответствует заданной (например, USD)."""
     for transaction in transactions:
@@ -32,14 +30,14 @@ def filter_by_currency(transactions: list, currency: str) -> Iterator:
             yield transaction
 
 
-def transaction_descriptions(transactions: list) -> Iterator:
+def transaction_descriptions(transactions: list[dict]) -> Iterator:
     """Функция создает генератор, который последовательно выдает описание транзакций"""
     for transaction in transactions:
         if transaction.get("description"):
             yield transaction["description"]
 
 
-def card_number_generator(start: int, stop: int) -> typing.Iterator:
+def card_number_generator(start: int, stop: int) -> Iterator:
     """Функция создает генератор, который выдает номера карт в заданном формате и указанном диапазоне"""
     for num in range(start, stop + 1):
         number_card = f"{num:016d}"
