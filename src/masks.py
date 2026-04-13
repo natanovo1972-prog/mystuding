@@ -22,7 +22,7 @@ def get_mask_card_number(number_card: str) -> str:
     return number_card[:4] + " " + number_card[4:6] + "** ****" + " " + number_card[-4:]
 
 
-print(get_mask_card_number("7000792289606361"))
+# print(get_mask_card_number("7000792289606361"))
 
 
 def get_mask_account(count_number: str) -> str:
@@ -37,4 +37,4 @@ def get_mask_account(count_number: str) -> str:
     return "**" + count_number[-4:]
 
 
-print(get_mask_account("73654108430135874305"))
+# print(get_mask_account("73654108430135874305"))

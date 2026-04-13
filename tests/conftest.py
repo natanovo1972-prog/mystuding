@@ -63,3 +63,32 @@ def transaction_description_valid() -> list:
              "operationAmount": {"amount": "67314.70", "currency": {"name": "руб.", "code": "RUB"}},
              "description": "Перевод организации", "from": "Visa Platinum 1246377376343588",
              "to": "Счет 14211924144426031657"}]
+
+
+
+@pytest.fixture
+def search_string():
+    return [{"id": 1, "describtion": "Покупки в супермаркетах"},
+            {"id": 2, "describtion": "Покупки на маркетплейсах"},
+            {"id": 3, "describtion": "Перевод маме"},
+            {"id": 4, "describtion": "Оплата обучения"}]
+
+
+@pytest.fixture
+def count_category():
+    return [{"id": 1, "describtion": "Покупки в супермаркетах", "category": "Покупки"},
+            {"id": 2, "describtion": "Покупки на маркетплейсах", "category": "Покупки"},
+            {"id": 3, "describtion": "Перевод маме", "category": "Перевод"},
+            {"id": 4, "describtion": "Оплата обучения", "category": "Оплата"}]
+
+
+@pytest.fixture
+def non_matching():
+    return [{"id": 1, "describtion": "Купил торт", "category": "Продукты"},
+            {"id": 2, "describtion": "Заказал наушники", "category": "Товары"},
+            {"id": 3, "describtion": "Бусы", "category": "Подарки"}]
+
+
+@pytest.fixture
+def empty_data():
+    return []

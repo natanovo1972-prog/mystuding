@@ -38,4 +38,4 @@ if __name__ == "__main__":  # pragma: no cover
     skript_folder = os.path.dirname(__file__)  # Определяем путь к текущей директории проекта
     file_path = os.path.join(skript_folder, "..", "data", "operations.json")  # Определяем полный путь к файлу
     result = fin_transaction(file_path)
-    print(result)
+    # print(result)
