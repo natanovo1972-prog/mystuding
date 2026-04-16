@@ -5,7 +5,7 @@ from src.masks import get_mask_account, get_mask_card_number
 
 def mask_account_card(account_card: str) -> str:
     """Функция принимает строку c типом и номером карты или счета, и возвращает строку с замаскированным номером"""
-    if not account_card:
+    if not isinstance (account_card, str) or not account_card.strip():
         return ""
     account_card_info = account_card.rsplit(' ', 1)
     if len(account_card_info) > 1:
