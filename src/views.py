@@ -1,18 +1,18 @@
 import json
 import os.path
-from datetime import datetime
+from datetime import datetime, time
 
 from src.utils import action_price, card_by_date, exchange_rate, get_setting_path, transactions_top
 
 
 def create_greeting(date_str: str) -> str:
     """Функция формирует приветствие на основе времени, указанном в дате"""
-    current_hour = datetime.now().hour
-    if 6 <= current_hour < 12:
+    current_hour = datetime.now().time()
+    if time(6, 0) <= current_hour <= time(11, 59, 59):
         return "Доброе утро"
-    elif 12 <= current_hour < 18:
+    elif time(12, 0) <= current_hour <= time(17, 59, 59):
         return "Добрый день"
-    elif 18 <= current_hour < 24:
+    elif time(18, 0) <= current_hour <= time(22, 59, 59):
         return "Добрый вечер"
     else:
         return "Доброй ночи"
