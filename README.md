@@ -7,10 +7,16 @@
 3. read_json - функция для чтения файла JSON.
 4. created_object_from_json - функция создания объектов класса из JSON-файла.
 
+Установка
+Клонируйте репозиторий: git clone git@github.com:natanovo1972-prog/mystuding.git
+
 Тестирование
 Установлена библиотека pytest. Написаны следующие тесты:
 1. Для класса Product - тест на иницализацию экземпляров класса.
 2. Для класса Category - тест на инициализацю экземпляров класса, тест на корректное суммирование данных двух атрибутов класса.
 
 Запуск тестов: bash pytest tests/ -v
+
+Установка зависимостей: bash pip install -r requirements.txt
+
 Разработчик Наталия Новожилова (Nataliya Novozhilova) - Beginner Python Developer

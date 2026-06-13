@@ -37,7 +37,6 @@ pip-log.txt
 pip-delete-this-directory.txt
 
 # Unit test / coverage reports
-htmlcov/
 .tox/
 .nox/
 .coverage
@@ -215,4 +214,3 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-requirements.txt
