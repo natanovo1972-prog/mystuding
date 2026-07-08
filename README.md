@@ -12,7 +12,7 @@
 8. created_object_from_json - функция создания объектов класса из JSON-файла.
 
 # Установка
-Клонируйте репозиторий: git clone git@github.com:natanovo1972-prog/mystuding.git
+Клонируйте репозиторий: https://github.com/natanovo1972-prog/mystuding.git
 
 # Тестирование
 Установлена библиотека pytest. Написаны следующие тесты:
