@@ -15,6 +15,15 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(products) if products else 0
 
+    def __repr__(self):
+        return self
+
+    def __str__(self):
+        count_products = 0
+        for product in self.__products:
+            count_products += product.quantity
+        return f"{self.name}, количество продуктов {count_products} шт."
+
     @property
     def products(self):
         """Возвращает строковое представление продуктов в категории"""
@@ -39,6 +48,8 @@ if __name__ == "__main__":  # pragma: no cover
         "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
         [product1, product2, product3]
     )
+
+    print(str(category1))
 
     print(category1.products)
     product4 = Product("55\" QLED 4K", "Фоновая подсветка", 123000.0, 7)

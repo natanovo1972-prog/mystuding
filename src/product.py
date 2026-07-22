@@ -11,6 +11,15 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
+    def __repr__(self):
+        return self
+
+    def __str__(self):
+        return f"{self.name}, {self.__price} руб. Остаток {self.quantity} шт."
+
+    def __add__(self, other):
+        return self.__price * self.quantity + other.__price * other.quantity
+
     @classmethod
     def new_product(cls, product: dict):
         """Метод для создания объектов из словаря"""
@@ -38,6 +47,14 @@ if __name__ == "__main__":  # pragma: no cover
     product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
     product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
     product4 = Product("55\" QLED 4K", "Фоновая подсветка", 123000.0, 7)
+
+    print(str(product1))
+    print(str(product2))
+    print(str(product3))
+
+    print(product1 + product2)
+    print(product1 + product3)
+    print(product2 + product3)
 
     new_product = Product.new_product(
         {"name": "Samsung Galaxy S23 Ultra", "description": "256GB, Серый цвет, 200MP камера", "price": 180000.0,

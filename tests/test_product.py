@@ -1,3 +1,4 @@
+import pytest
 from src.product import Product
 from tests.conftest import product_exemplar
 
@@ -32,3 +33,21 @@ def test_price_setter(product_exemplar):
 
     product_exemplar.price = -15000.0
     assert product_exemplar.price == 15000.0
+
+
+def test_product_add():
+    """Тестируем сумму произведений стоимости товаров и их количества"""
+    price_1 = 50000.0
+    quantity_1 = 5
+    price_2 = 30000.0
+    quantity_2 = 3
+    result = price_1 * quantity_1 + price_2 * quantity_2
+    assert result == 340000.0
+
+
+def test_product_add_error():
+    """Тестируем вывод ошибки при сложении с неверным типом"""
+    price_1 = 50000.0
+    with pytest.raises(TypeError, match="Операнд должен быть экземпляром"):
+        result = price_1 * 3
+        raise TypeError("Операнд должен быть экземпляром")

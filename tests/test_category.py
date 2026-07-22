@@ -32,3 +32,9 @@ def test_category_products_format(category_exemplar):
         "Xiaomi Redmi Note 11, 31000.0 руб. Остаток 14 шт."
     )
     assert category_exemplar.products == expected_format
+
+
+def test_category_str(category_exemplar):
+    """Тестируем количество экземпляров каждого продукта"""
+    result = str(category_exemplar)
+    assert result == "Смартфоны, количество продуктов 22 шт."
