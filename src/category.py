@@ -34,8 +34,11 @@ class Category:
         return "\n".join(product_new)
 
     def add_product(self, product: Product):
-        self.__products.append(product)
-        Category.product_count += 1
+        if isinstance(product, Product):
+            self.__products.append(product)
+            Category.product_count += 1
+        else:
+            raise TypeError
 
 
 if __name__ == "__main__":  # pragma: no cover

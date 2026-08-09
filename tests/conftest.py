@@ -1,7 +1,9 @@
 import pytest
 
+from src.lawngrass import LawnGrass
 from src.product import Product
 from src.category import Category
+from src.smartphone import Smartphone
 
 
 @pytest.fixture
@@ -59,6 +61,30 @@ def category_attribute():
                             14)
                     ]
                     )
+
+@pytest.fixture
+def smartphone_exemplar():
+    """Фикстура для тестирования экземпляра класса Смартфоны"""
+    return Smartphone(name="Samsung Galaxy S23 Ultra",
+                   description="256GB, Серый цвет, 200MP камера",
+                   price=180000.0,
+                   quantity=5,
+                   efficiency=95.5,
+                   model="S23 Ultra",
+                   memory=256,
+                   color="Серый"
+                   )
+
+@pytest.fixture
+def lawngrass_exemplar():
+    return LawnGrass(name="Газонная трава",
+                     description="Элитная трава для газона",
+                     price=500.0,
+                     quantity=20,
+                     country="Россия",
+                     germination_period="7 дней",
+                     color="Зеленый"
+                     )
 
 
 @pytest.fixture(autouse=True)
