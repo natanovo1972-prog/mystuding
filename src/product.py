@@ -1,4 +1,8 @@
-class Product:
+from src.base_product import BaseProduct
+from src.print_mixin import PrintMixin
+
+
+class Product(PrintMixin, BaseProduct):
     """Создаем класс Продукты"""
     name: str
     description: str
@@ -10,9 +14,7 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
-
-    def __repr__(self):
-        return self
+        super().__init__()
 
     def __str__(self):
         return f"{self.name}, {self.__price} руб. Остаток {self.quantity} шт."
@@ -57,6 +59,21 @@ if __name__ == "__main__":  # pragma: no cover
     print(product1 + product2)
     print(product1 + product3)
     print(product2 + product3)
+
+    print(product1.name)
+    print(product1.description)
+    print(product1.price)
+    print(product1.quantity)
+
+    print(product2.name)
+    print(product2.description)
+    print(product2.price)
+    print(product2.quantity)
+
+    print(product3.name)
+    print(product3.description)
+    print(product3.price)
+    print(product3.quantity)
 
     new_product = Product.new_product(
         {"name": "Samsung Galaxy S23 Ultra", "description": "256GB, Серый цвет, 200MP камера", "price": 180000.0,
