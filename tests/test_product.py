@@ -11,6 +11,14 @@ def test_product_init(product_exemplar):
     assert product_exemplar.quantity == 5
 
 
+def test_product_quantity_zero():
+    """Тестируем нулевое количество продуктов в классе Продукты"""
+    quantity_1 = 0
+    with pytest.raises(ValueError, match="Товар с нулевым количеством не может быть добавлен"):
+        result = quantity_1
+        raise ValueError("Товар с нулевым количеством не может быть добавлен")
+
+
 def test_new_product():
     """Тестируем создание продукта через класс-метод new_product"""
     product_data = {

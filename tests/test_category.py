@@ -38,3 +38,17 @@ def test_category_str(category_exemplar):
     """Тестируем количество экземпляров каждого продукта"""
     result = str(category_exemplar)
     assert result == "Смартфоны, количество продуктов 22 шт."
+
+
+def test_middle_price(category_exemplar):
+    """Тестируем среднюю стоимость товаров в классе Категории"""
+    assert category_exemplar.middle_price() == 120500.0
+
+
+def test_middle_price_empty_category():
+    """Тестируем, что программа выдает ноль при подсчете среднего ценника, если в категории отсутствуют товары"""
+    empty_category = Category(name="Пустая категория",
+                              description="Категория без продуктов",
+                              products=[]
+                              )
+    assert empty_category.middle_price() == 0

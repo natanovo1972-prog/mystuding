@@ -40,6 +40,12 @@ class Category:
         else:
             raise TypeError
 
+    def middle_price(self):
+        try:
+            return sum([product.price for product in self.__products]) / len(self.__products)
+        except ZeroDivisionError:
+            return 0
+
 
 if __name__ == "__main__":  # pragma: no cover
     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
@@ -75,3 +81,8 @@ if __name__ == "__main__":  # pragma: no cover
     print(new_product.price)
     new_product.price = 0
     print(new_product.price)
+
+    print(category1.middle_price())
+
+    category_empty = Category("Пустая категория", "Категория без продуктов", [])
+    print(category_empty.middle_price())
