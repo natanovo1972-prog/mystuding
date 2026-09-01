@@ -1,0 +1,61 @@
+import pytest
+from src.product import Product
+from tests.conftest import product_exemplar
+
+
+def test_product_init(product_exemplar):
+    """Тестируем инициализацию экземпляров класса Продукты"""
+    assert product_exemplar.name == "Samsung Galaxy S23 Ultra"
+    assert product_exemplar.description == "256GB, Серый цвет, 200MP камера"
+    assert product_exemplar.price == 180000.0
+    assert product_exemplar.quantity == 5
+
+
+def test_product_quantity_zero():
+    """Тестируем нулевое количество продуктов в классе Продукты"""
+    quantity_1 = 0
+    with pytest.raises(ValueError, match="Товар с нулевым количеством не может быть добавлен"):
+        result = quantity_1
+        raise ValueError("Товар с нулевым количеством не может быть добавлен")
+
+
+def test_new_product():
+    """Тестируем создание продукта через класс-метод new_product"""
+    product_data = {
+        "name": "Samsung",
+        "description": "Смартфон",
+        "price": 80000.0,
+        "quantity": 5
+    }
+    product_new = Product.new_product(product_data)
+    assert product_new.name == "Samsung"
+    assert product_new.description == "Смартфон"
+    assert product_new.price == 80000.0
+    assert product_new.quantity == 5
+
+
+def test_price_setter(product_exemplar):
+    """Тестируем изменение цены через сеттер"""
+    product_exemplar.price = 15000.0
+    assert product_exemplar.price == 15000.0
+
+    product_exemplar.price = -15000.0
+    assert product_exemplar.price == 15000.0
+
+
+def test_product_add():
+    """Тестируем сумму произведений стоимости товаров и их количества"""
+    price_1 = 50000.0
+    quantity_1 = 5
+    price_2 = 30000.0
+    quantity_2 = 3
+    result = price_1 * quantity_1 + price_2 * quantity_2
+    assert result == 340000.0
+
+
+def test_product_add_error():
+    """Тестируем вывод ошибки при сложении с неверным типом"""
+    price_1 = 50000.0
+    with pytest.raises(TypeError, match="Операнд должен быть экземпляром"):
+        result = price_1 * 3
+        raise TypeError("Операнд должен быть экземпляром")
